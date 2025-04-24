@@ -1,0 +1,6 @@
+# Ignore artifacts:
+.nuxt
+.output
+
+# Ignore all HTML files:
+**/*.html
