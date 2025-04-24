@@ -15,6 +15,6 @@ useHead({
 
 <style lang="css">
 body {
-  @apply min-h-lvh;
+  @apply min-h-svh;
 }
 </style>
