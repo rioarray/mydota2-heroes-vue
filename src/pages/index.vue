@@ -30,8 +30,10 @@ watchEffect(() => {
 })
 
 watchEffect(() => {
-  if (isVisible.value && searchRef.value) {
-    searchRef.value?.focus()
+  if (isVisible.value) {
+    searchRef.value?.focus?.()
+  } else {
+    searchValue.value = ''
   }
 })
 
@@ -81,7 +83,7 @@ const listData = computed(() => {
             ref="search-ref"
             v-model="searchValue"
             placeholder="Search heroes..."
-            class="text-sm placeholder-slate-400 w-full h-full outline-0"
+            class="text-sm placeholder-slate-400 w-full h-full outline-none appearance-none"
           />
         </motion.div>
       </AnimatePresence>
