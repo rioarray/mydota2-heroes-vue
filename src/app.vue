@@ -15,6 +15,6 @@ useHead({
 
 <style lang="css">
 body {
-  @apply min-h-screen;
+  @apply min-h-dvh;
 }
 </style>

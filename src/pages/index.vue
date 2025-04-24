@@ -89,7 +89,7 @@ const listData = computed(() => {
       </AnimatePresence>
       <div class="flex justify-end relative">
         <AnimatePresence :initial="false">
-          <div
+          <motion.div
             v-if="isVisible"
             :initial="{ opacity: 0, scale: 0 }"
             :animate="{ opacity: 1, scale: 1 }"
@@ -97,7 +97,7 @@ const listData = computed(() => {
             class="flex w-full absolute justify-center"
           >
             <ActionIcon icon="ph:x-bold" @visible="isVisible = false" />
-          </div>
+          </motion.div>
         </AnimatePresence>
         <ActionIcon
           icon="ph:magnifying-glass-bold"
