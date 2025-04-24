@@ -12,3 +12,9 @@ useHead({
     <NuxtPage />
   </NuxtLayout>
 </template>
+
+<style lang="css">
+body {
+  @apply min-h-dvh;
+}
+</style>
