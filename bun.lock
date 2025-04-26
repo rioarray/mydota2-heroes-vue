@@ -9,6 +9,7 @@
         "@nuxt/icon": "1.12.0",
         "@nuxt/image": "^1.10.0",
         "@tanstack/vue-query": "^5.74.5",
+        "@tanstack/vue-query-devtools": "^5.74.6",
         "eslint": "^9.0.0",
         "motion-v": "^1.0.0-beta.2",
         "nuxt": "^3.16.2",
@@ -429,7 +430,11 @@
 
     "@tanstack/query-core": ["@tanstack/query-core@5.74.4", "", {}, "sha512-YuG0A0+3i9b2Gfo9fkmNnkUWh5+5cFhWBN0pJAHkHilTx6A0nv8kepkk4T4GRt4e5ahbtFj2eTtkiPcVU1xO4A=="],
 
+    "@tanstack/query-devtools": ["@tanstack/query-devtools@5.74.6", "", {}, "sha512-djaFT11mVCOW3e0Ezfyiq7T6OoHy2LRI1fUFQvj+G6+/4A1FkuRMNUhQkdP1GXlx8id0f1/zd5fgDpIy5SU/Iw=="],
+
     "@tanstack/vue-query": ["@tanstack/vue-query@5.74.5", "", { "dependencies": { "@tanstack/match-sorter-utils": "^8.19.4", "@tanstack/query-core": "5.74.4", "@vue/devtools-api": "^6.6.3", "vue-demi": "^0.14.10" }, "peerDependencies": { "@vue/composition-api": "^1.1.2", "vue": "^2.6.0 || ^3.3.0" }, "optionalPeers": ["@vue/composition-api"] }, "sha512-1IvuUASQ3h5jbM+90AR4vIDDLxYyGA9Iefvzx9uQMDA4c5Gpd9ETKHZgSUvFM3sXw6k0tY3uHtllBf875OqOcQ=="],
+
+    "@tanstack/vue-query-devtools": ["@tanstack/vue-query-devtools@5.74.6", "", { "dependencies": { "@tanstack/query-devtools": "5.74.6" }, "peerDependencies": { "@tanstack/vue-query": "^5.74.6", "vue": "^3.3.0" } }, "sha512-oM5jabG8X9dw8gF5AbVnqzX3EJV7lZ08i7RUWzNgE7fFDYPflYPY6VPJ8ykLAEl1O7gOR8J8t9eDXkgqft0hVg=="],
 
     "@trysound/sax": ["@trysound/sax@0.2.0", "", {}, "sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA=="],
 

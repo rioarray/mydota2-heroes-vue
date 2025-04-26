@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { VueQueryDevtools } from '@tanstack/vue-query-devtools'
+
 useHead({
   // as a string,
   // where `%s` is replaced with the title
@@ -10,6 +12,7 @@ useHead({
   <NuxtRouteAnnouncer />
   <NuxtLayout>
     <NuxtPage />
+    <VueQueryDevtools />
   </NuxtLayout>
 </template>
 
