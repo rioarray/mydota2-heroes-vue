@@ -31,7 +31,7 @@ watchEffect(() => {
         :initial="{ opacity: 0, scale: 0 }"
         :animate="{ opacity: 1, scale: 1 }"
         :exit="{ opacity: 0, scale: 0 }"
-        class="border border-slate-200 bg-white rounded-md w-full h-[42px] p-2 mb-2"
+        class="border border-slate-200 bg-white rounded-md w-full h-[48px] p-2 mb-2"
       >
         <input
           ref="search-ref"

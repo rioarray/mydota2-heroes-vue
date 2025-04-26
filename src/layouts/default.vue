@@ -3,7 +3,7 @@ import { AppHeader } from '#components'
 </script>
 
 <template>
-  <div class="overflow-x-hidden">
+  <div>
     <AppHeader />
     <main class="flex flex-col pt-12">
       <div class="mx-auto w-full max-w-md">
