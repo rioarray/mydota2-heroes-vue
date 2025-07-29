@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useQuery } from '@tanstack/vue-query'
-import type { IHeroStats } from '~/shared/types/hero-stats'
 
 useSeoMeta({
   title: 'Home',
@@ -66,6 +65,7 @@ const listData = computed(() => {
         class="[&:not(:last-child)]:mb-3"
       >
         <CardList
+          :id="item.id"
           :name="item.localized_name"
           :type="item.attack_type"
           :image="`${config.public.heroAssetHost}${item.img}`"
