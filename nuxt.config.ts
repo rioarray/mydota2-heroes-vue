@@ -31,6 +31,6 @@ export default defineNuxtConfig({
       heroAssetHost: process.env.NUXT_PUBLIC_HERO_ASSET_HOST,
     },
   },
-  srcDir: 'src/',
+  srcDir: 'app/',
   typescript: { typeCheck: true },
 })
