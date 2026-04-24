@@ -21,7 +21,7 @@
     "@tanstack/vue-virtual": "^3.13.24",
     "eslint": "^9.32.0",
     "motion-v": "^1.6.1",
-    "nuxt": "^4.4.2",
+    "nuxt": "4.0.2",
     "vue": "^3.5.18",
     "vue-router": "^4.5.1"
   },
