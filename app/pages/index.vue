@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useQuery } from '@tanstack/vue-query'
+import { useWindowVirtualizer } from '@tanstack/vue-virtual'
 
 useSeoMeta({
   title: 'Home',
@@ -10,6 +11,9 @@ const total = useTotal()
 
 const isVisible = ref(false)
 const searchValue = ref('')
+
+const parentRef = ref<HTMLElement | null>(null)
+const parentOffsetRef = ref(0)
 
 // data fetching in Nuxt can using $fetch, useFetch, useAsyncData
 // ref: https://nuxt.com/docs/getting-started/data-fetching
@@ -31,6 +35,11 @@ const { data, isLoading } = useQuery<IHeroStats[]>({
 //   await suspense()
 // })
 
+onMounted(() => {
+  parentOffsetRef.value = parentRef.value?.offsetTop ?? 0
+  measureAll()
+})
+
 watch(
   data,
   (val) => {
@@ -38,6 +47,16 @@ watch(
   },
   { once: true }
 )
+
+const virtualizer = useWindowVirtualizer({
+  count: data.value?.length ?? 127,
+  estimateSize: () => 45,
+  scrollMargin: parentOffsetRef.value,
+})
+
+const virtualRows = computed(() => virtualizer.value.getVirtualItems())
+const totalSize = computed(() => virtualizer.value.getTotalSize())
+const virtualItemEls = shallowRef([])
 
 const listData = computed(() => {
   let sortData = [...(data.value ?? [])].sort((a, b) => {
@@ -53,24 +72,50 @@ const listData = computed(() => {
   }
   return sortData
 })
+
+const measureAll = () => {
+  virtualizer.value.measureElement(null)
+  virtualItemEls.value.forEach((el) => {
+    if (el) virtualizer.value.measureElement(el)
+  })
+}
+
+onMounted(measureAll)
+
+onUpdated(measureAll)
 </script>
 
 <template>
   <div v-if="isLoading" class="px-4"><LazySkeleton /></div>
   <div v-else>
-    <div class="px-4">
+    <div
+      ref="parentRef"
+      class="px-4 relative"
+      :style="{ height: `${totalSize}px` }"
+    >
       <div
-        v-for="item in listData"
-        :key="item.id"
-        class="[&:not(:last-child)]:mb-3"
+        class="absolute top-0 left-0 w-full"
+        :style="{
+          transform: `translateY(${
+            virtualRows[0]?.start ?? 0 - virtualizer.options.scrollMargin
+          }px)`,
+        }"
       >
-        <CardList
-          :id="item.id"
-          :name="item.localized_name"
-          :type="item.attack_type"
-          :image="`${config.public.heroAssetHost}${item.img}`"
-          :roles="item.roles"
-        />
+        <div
+          v-for="dataRow in virtualRows"
+          ref="virtualItemEls"
+          :key="dataRow.index"
+          :data-index="dataRow.index"
+          class="[&:not(:last-child)]:mb-3"
+        >
+          <CardList
+            :id="listData[dataRow.index]?.id ?? 0"
+            :name="listData[dataRow.index]?.localized_name ?? ''"
+            :type="listData[dataRow.index]?.attack_type ?? ''"
+            :image="`${config.public.heroAssetHost}${listData[dataRow.index]?.img}`"
+            :roles="listData[dataRow.index]?.roles ?? []"
+          />
+        </div>
       </div>
     </div>
     <FloatingContent
